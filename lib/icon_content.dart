@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'shared.dart';
 
 class iconContent extends StatelessWidget {
   final IconData? icon;
   final String label;
-  final fonty = TextStyle(
-    fontSize: 18,
-    color: Color(0xFF8D8E98),
-  );
 
   iconContent({this.icon, required this.label});
 
@@ -23,7 +20,7 @@ class iconContent extends StatelessWidget {
         SizedBox(height: 15),
         Text(
           label,
-          style: fonty,
+          style: kFonty,
         ),
       ],
     );
