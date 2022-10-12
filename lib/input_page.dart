@@ -1,8 +1,10 @@
+import 'package:bmies/result.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'cardy.dart';
 import 'shared.dart';
+import 'result.dart';
 
 const activeCard = Color(0xFF1D1E33);
 const inactiveCard = Color(0xFF111328);
@@ -218,15 +220,24 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            Container(
-              color: Color(0xFFEB1555),
-              margin: EdgeInsets.only(top: 10),
-              width: double.infinity,
-              height: 75,
-              child: Center(
-                child: Text(
-                  'Calculate your BMI',
-                  style: TextStyle(fontSize: 25),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => result()));
+              },
+              child: Container(
+                color: Color(0xFFEB1555),
+                margin: EdgeInsets.only(top: 10),
+                width: double.infinity,
+                height: 75,
+                child: Center(
+                  child: Text(
+                    'Calculate',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
                 ),
               ),
             ),

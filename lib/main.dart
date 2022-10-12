@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'input_page.dart';
+import 'result.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'BMI Calculator',
-      theme: ThemeData(
+      theme: ThemeData.dark().copyWith(
         // This is the theme of your application.
         scaffoldBackgroundColor: Color(0xFF0A0E21),
         textTheme: TextTheme(
