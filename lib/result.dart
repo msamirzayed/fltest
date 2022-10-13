@@ -5,7 +5,11 @@ import 'cardy.dart';
 import 'shared.dart';
 
 class result extends StatelessWidget {
-  const result({Key? key}) : super(key: key);
+  result({required this.bm, required this.inter, required this.res});
+
+  String bm;
+  String inter;
+  String res;
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +38,22 @@ class result extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Normal',
+                      res.toUpperCase(),
                       style: TextStyle(
                           color: Color(0xFF24D876),
                           fontSize: 22,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      '18.2',
+                      bm,
                       style: kFontyNumber,
                     ),
                     Text(
-                      'your BMI is higher than normal you should eat less more',
+                      'Normal BMI 18.5 : 24.9',
+                      style: kFonty,
+                    ),
+                    Text(
+                      inter,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 22),
                     )
@@ -54,12 +62,7 @@ class result extends StatelessWidget {
               )),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyHomePage(
-                            title: 'BMI Calcos',
-                          )));
+              Navigator.pop(context);
             },
             child: Container(
               color: Color(0xFFEB1555),
@@ -68,7 +71,7 @@ class result extends StatelessWidget {
               height: 75,
               child: Center(
                 child: Text(
-                  'Calculate Again',
+                  'Calculate Again ?',
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,

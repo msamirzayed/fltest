@@ -5,6 +5,7 @@ import 'icon_content.dart';
 import 'cardy.dart';
 import 'shared.dart';
 import 'result.dart';
+import 'brain.dart';
 
 const activeCard = Color(0xFF1D1E33);
 const inactiveCard = Color(0xFF111328);
@@ -168,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 },
                                 child: Icon(Icons.add),
                                 backgroundColor: Color(0xFF1D1E33),
-                              )
+                              ),
                             ],
                           )
                         ],
@@ -222,8 +223,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             GestureDetector(
               onTap: () {
+                Brain calc = Brain(height: height, weight: weight);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => result()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => result(
+                              bm: calc.calcBMI(),
+                              inter: calc.getInterp(),
+                              res: calc.getResult(),
+                            )));
               },
               child: Container(
                 color: Color(0xFFEB1555),
