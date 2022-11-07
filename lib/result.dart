@@ -3,6 +3,7 @@ import 'package:bmies/shared.dart';
 import 'package:flutter/material.dart';
 import 'cardy.dart';
 import 'shared.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class result extends StatelessWidget {
   result({required this.bm, required this.inter, required this.res});
@@ -15,7 +16,7 @@ class result extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('BMI Calcos')),
+        title: Center(child: Text('Easy BMI Calculator')),
         backgroundColor: Color(0xFF0A0E21),
       ),
       body: Column(

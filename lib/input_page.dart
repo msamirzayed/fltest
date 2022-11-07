@@ -6,6 +6,8 @@ import 'cardy.dart';
 import 'shared.dart';
 import 'result.dart';
 import 'brain.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'ad_helper.dart';
 
 const activeCard = Color(0xFF1D1E33);
 const inactiveCard = Color(0xFF111328);
@@ -29,6 +31,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Gender? selectedGender;
   @override
   Widget build(BuildContext context) {
+    if (_interstitialAd == null) {
+      _loadInterstitialAd();
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF0A0E21),
@@ -224,6 +229,11 @@ class _MyHomePageState extends State<MyHomePage> {
             GestureDetector(
               onTap: () {
                 Brain calc = Brain(height: height, weight: weight);
+
+                // TODO: Display an Interstitial Ad
+
+                _interstitialAd?.show();
+                _loadInterstitialAd();
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -251,6 +261,32 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+// TODO: Add _interstitialAd
+  InterstitialAd? _interstitialAd;
+
+// TODO: Implement _loadInterstitialAd()
+  void _loadInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: AdHelper.interstitialAdUnitId,
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          ad.fullScreenContentCallback =
+              FullScreenContentCallback(onAdDismissedFullScreenContent: (ad) {
+            //
+          });
+
+          setState(() {
+            _interstitialAd = ad;
+          });
+        },
+        onAdFailedToLoad: (err) {
+          print('Failed to load an interstitial ad: ${err.message}');
+        },
       ),
     );
   }
